@@ -26,13 +26,8 @@ io.on('connection', (socket) => {
   console.log("User connected", socket.id);
 
   socket.on('message', ({ message, room }) => {
-    console.log("message is recieved by client")
-    io.to(room).emit("receive-msg", message); // Correct typo in 'receive-msg'
-  });
-
-  socket.on('join-room', (room) => {
-    console.log("Joined", socket.id);
-    socket.join(room);
+    console.log("message is recieved by client",{message,room})
+    io.to(room).emit("receive-msg", message);
   });
 
   // Broadcaster starts the stream
