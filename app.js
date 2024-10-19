@@ -26,7 +26,8 @@ io.on('connection', (socket) => {
   console.log("User connected", socket.id);
 
   socket.on('message', ({ message, room }) => {
-    console.log("message is recieved by client",{message,room})
+    console.log("message is recieved by client", message)
+    console.log("room", room)
     io.to(room).emit("receive-msg", message);
   });
 
